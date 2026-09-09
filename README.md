@@ -3,7 +3,8 @@
 **Live site:** https://chriscross309.github.io
 
 An interactive resume built like a Power BI report — four pages, cross-filtering by role, and a
-measured-impact view where every figure comes from my own delivery record.
+measured-impact view where every figure comes from my own delivery record or from Rocket's own
+investor disclosure.
 
 ---
 
@@ -34,6 +35,10 @@ The repository already exists and Pages is already enabled, so updating is just 
 If a change doesn't appear, it is almost always browser cache rather than a failed deploy. Check in a
 private window before assuming something broke.
 
+`index.html` and `resume.pdf` travel together: the PDF is embedded inside the HTML as base64 behind the
+Download Resume button, so uploading one without the other means the button serves a different document
+than the direct link does.
+
 ### After changing `og.png` or the Open Graph tags
 
 LinkedIn caches preview cards aggressively and will keep showing the old one. Force a re-fetch through
@@ -47,6 +52,12 @@ LinkedIn caches preview cards aggressively and will keep showing the old one. Fo
   Alzheimer's Association palette behind the volunteer work.
 - **A first-visit intro screen.** Shows once per visitor, then remembers — returning visitors land
   straight on Overview. Re-openable any time via **View intro** in the left rail.
+- **A curated Overview.** A first-person profile with a call to action, and nine KPI tiles ordered so
+  that the first two rows each span all three employers. Two figures are Rocket's own public numbers,
+  cited to the Q4 2022 earnings call, so a recruiter can verify them without asking.
+- **A career timeline that leads with the analytics career** without hiding what came before it. The
+  pre-analytics claims-adjuster span is a dashed unfilled bar tagged *prior to analytics*, and the header
+  reads both totals — 10.3 years, 6.8 in analytics.
 - **A full mobile layout.** One width-driven breakpoint, so rotating a phone just re-runs it. The
   career timeline stacks into rows, the flow diagrams run top to bottom, and Work / Volunteer becomes
   a segmented control on the Experience page instead of a nested rail item.
@@ -70,6 +81,10 @@ build, including by decoding the PDF embedded behind the Download Resume button 
 
 Those stay on the F drive and go to people directly.
 
+The same check covers confidentiality, not just PII. Rocket Rewards figures on this site are limited to
+what Rocket Companies disclosed publicly; internal cohort numbers are deliberately absent and should stay
+that way. The reasoning is in the Claude project's decisions log.
+
 ---
 
 ## Linking it on LinkedIn
@@ -88,7 +103,7 @@ client-side:
 
 - Four report pages and the left navigation
 - The role slicer and its cross-filtering
-- The Download Resume button, which assembles the PDF in the visitor's browser
+- The Download Resume button, which serves `resume.pdf` from this repo
 
 Fonts come from Google Fonts. If that request fails, the page falls back to Arial Narrow and system
 sans — still legible, different typeface.
