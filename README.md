@@ -56,8 +56,12 @@ LinkedIn caches preview cards aggressively and will keep showing the old one. Fo
   that the first two rows each span all three employers. Two figures are Rocket's own public numbers,
   cited to the Q4 2022 earnings call, so a recruiter can verify them without asking.
 - **A career timeline that leads with the analytics career** without hiding what came before it. The
-  pre-analytics claims-adjuster span is a dashed unfilled bar tagged *prior to analytics*, and the header
+  pre-analytics claims-adjuster span is a dashed, unfilled bar tagged *prior to analytics*, and the header
   reads both totals — 10.3 years, 6.8 in analytics.
+- **One skillset table.** Capability, what it was used for, a proficiency cell, and which of the three
+  employers it was used at. One dot is proficient, two advanced, three expert.
+- **A calmer dark theme.** Body text sits at about 11:1 rather than 14:1, which keeps it above WCAG AAA
+  while taking the glare off. Every pair was re-checked against AA.
 - **A full mobile layout.** One width-driven breakpoint, so rotating a phone just re-runs it. The
   career timeline stacks into rows, the flow diagrams run top to bottom, and Work / Volunteer becomes
   a segmented control on the Experience page instead of a nested rail item.
