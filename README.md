@@ -59,13 +59,17 @@ LinkedIn caches preview cards aggressively and will keep showing the old one. Fo
   pre-analytics claims-adjuster span is a dashed, unfilled bar tagged *prior to analytics*, and the header
   reads both totals: 10.3 years, 6.8 in analytics. An education timeline sits under it on the same axis,
   with each degree marked at its graduation year.
-- **One skillset table.** Capability, what it was used for, a proficiency cell, and which of the three
-  employers it was used at. One dot is proficient, two advanced, three expert.
+- **One skillset table.** Five capability groups, each with a rating and the employers it was used at.
+  An arrow opens a group to show each capability and what I did with it. One dot is proficient, two
+  advanced, three expert.
+- **Short, direct copy.** Paragraphs keep to 15 words a sentence and 3 sentences a paragraph, and
+  every title and label carries a capital on every word.
 - **A calmer dark theme.** Body text sits at about 11:1 rather than 14:1, which keeps it above WCAG AAA
   while taking the glare off. Every pair was re-checked against AA.
 - **A full mobile layout.** One width-driven breakpoint, so rotating a phone just re-runs it. The
-  career timeline stacks into rows, the flow diagrams run top to bottom, and Work / Volunteer becomes
-  a segmented control on the Experience page instead of a nested rail item.
+  timelines stack into rows with year lines running through them, the flow diagrams run top to bottom
+  with arrows between steps, and Work / Volunteer becomes a segmented control on the Experience page
+  instead of a nested rail item.
 - **Light and dark themes**, following the visitor's system setting.
 - **A Projects page.** Three analytics projects built on public data: flood insurance, consumer
   lending, and health and aging. The page opens on why public regulated data, one card per project, and
