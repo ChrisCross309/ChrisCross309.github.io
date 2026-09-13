@@ -57,7 +57,8 @@ LinkedIn caches preview cards aggressively and will keep showing the old one. Fo
   cited to the Q4 2022 earnings call, so a recruiter can verify them without asking.
 - **A career timeline that leads with the analytics career** without hiding what came before it. The
   pre-analytics claims-adjuster span is a dashed, unfilled bar tagged *prior to analytics*, and the header
-  reads both totals: 10.3 years, 6.8 in analytics.
+  reads both totals: 10.3 years, 6.8 in analytics. An education timeline sits under it on the same axis,
+  with each degree marked at its graduation year.
 - **One skillset table.** Capability, what it was used for, a proficiency cell, and which of the three
   employers it was used at. One dot is proficient, two advanced, three expert.
 - **A calmer dark theme.** Body text sits at about 11:1 rather than 14:1, which keeps it above WCAG AAA
@@ -67,8 +68,9 @@ LinkedIn caches preview cards aggressively and will keep showing the old one. Fo
   a segmented control on the Experience page instead of a nested rail item.
 - **Light and dark themes**, following the visitor's system setting.
 - **A Projects page.** Three analytics projects built on public data: flood insurance, consumer
-  lending, and health and aging. The page opens on why public regulated data, with one card per project.
-  A card opens that project's full analysis and how it was built, and a Back button returns to the cards.
+  lending, and health and aging. The page opens on why public regulated data, one card per project, and
+  how the shared backend was built. A card opens that project's full analysis and a conclusion that says
+  whether the question was answered, and a Back button returns to the cards.
   Every figure is generated from the writeup's figures and checked against them before upload, and every
   card keeps its "what this does not say" line. Link straight to a project with
   `#projects/flood-insurance`, `#projects/consumer-lending` or `#projects/health-and-aging`.
