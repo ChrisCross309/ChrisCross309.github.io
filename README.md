@@ -71,9 +71,12 @@ LinkedIn caches preview cards aggressively and will keep showing the old one. Fo
   with arrows between steps, and Work / Volunteer becomes a segmented control on the Experience page
   instead of a nested rail item.
 - **Light and dark themes**, following the visitor's system setting.
+- **A Performance Marketing Reporting Suite card on Impact.** Four Rocket Mortgage reports in campaign
+  order, from sizing an audience to tuning the targeting models.
 - **A Projects page.** Three analytics projects built on public data: flood insurance, consumer
   lending, and health and aging. The page opens on why public regulated data, one card per project, and
-  how the shared backend was built. A card opens that project's full analysis and a conclusion that says
+  how the shared backend was built. A Data Sources card cites all 13 public datasets, each linked to its
+  publisher's own page. A card opens that project's full analysis and a conclusion that says
   whether the question was answered, and a Back button returns to the cards.
   Every figure is generated from the writeup's figures and checked against them before upload, and every
   card keeps its "what this does not say" line. Link straight to a project with
@@ -100,6 +103,9 @@ Those stay on the F drive and go to people directly.
 The same check covers confidentiality, not just PII. Rocket Rewards figures on this site are limited to
 what Rocket Companies disclosed publicly; internal cohort numbers are deliberately absent and should stay
 that way. The reasoning is in the Claude project's decisions log.
+
+The Performance Marketing Reporting Suite card follows the same rule. Its campaign test is described without a
+number, and it does not name the prescreen vendor.
 
 ---
 
