@@ -78,8 +78,8 @@ LinkedIn caches preview cards aggressively and will keep showing the old one. Fo
   how the shared backend was built. A Data Sources card cites all 13 public datasets, each linked to its
   publisher's own page. A card opens that project's full analysis and a conclusion that says
   whether the question was answered, and a Back button returns to the cards.
-  Every figure is generated from the writeup's figures and checked against them before upload, and every
-  card keeps its "what this does not say" line. Link straight to a project with
+  Every figure is generated from the writeup's figures and checked against them before upload. Link
+  straight to a project with
   `#projects/flood-insurance`, `#projects/consumer-lending` or `#projects/health-and-aging`.
 
 ---
