@@ -167,7 +167,7 @@ main{padding:30px 40px 60px;max-width:1900px;}
 .gbar span{font-family:var(--f-m);font-size:9.5px;color:inherit;white-space:nowrap;letter-spacing:.04em;}
 .gpre{display:inline-block;margin-top:5px;border:1.4px solid var(--mute);padding:1px 6px;font-family:var(--f-m);
   font-size:8px;letter-spacing:.11em;text-transform:uppercase;color:var(--mute);}
-.gbar.pre{border-style:dashed;}
+.gbar.pre{border-style:dashed;background:var(--surface);color:var(--ink-2);}
 .gdur{position:absolute;top:50%;transform:translateY(-50%);font-family:var(--f-m);font-size:9.5px;color:var(--mute);white-space:nowrap;}
 .gmeta{display:none;}
 .ggrid{display:none;}
@@ -725,8 +725,14 @@ main{padding:30px 40px 60px;max-width:1900px;}
   .gtrack{height:18px;margin:8px 0 0;}
   .gbar{top:0;bottom:0;height:auto;padding:0;}
   .gbar span{display:none;}
+  /* dashes read as a placeholder at phone size, so the Tier II bar keeps its empty look as a solid outline on the tile fill */
+  .gbar.pre{border-style:solid;border-width:2px;background:var(--surface-2);}
   .gdur{display:none;}
-  .edyr{display:none;}
+  /* the year sits on the track beside its marker instead of under the school, and the first marker stays on the line */
+  .edrow .gmeta{display:none;}
+  .edyr{margin-left:2px;font-size:10.5px;color:var(--ink-2);}
+  .edmark.edstart{transform:translate(0,-50%);}
+  .edmark.edstart + .edyr{margin-left:10px;}
 
   /* ---- flow diagrams run top to bottom, waits become connectors ---- */
   .frow{display:block;}
@@ -916,9 +922,8 @@ main{padding:30px 40px 60px;max-width:1900px;}
         <div class="vz-hd"><h3>DABOT: Automated SCRUM Backlog Assistant</h3><span class="sub">Little Caesars</span></div>
         <div class="fun2" id="fun-dabot"></div>
         <div class="fnote">
-          Story writing took about an hour of debate per set of acceptance criteria. The real cost was the SCRUM
-          cycle, with each handoff waiting on a ceremony. Cutting the stage saved <b>3 days</b> and kept developers
-          from running out of ready work.
+          Our agentic AI turns meeting transcripts and proposals into work items. That eliminated the need for a
+          story writing stage. Cutting it saved <b>3 days</b> per cycle and keeps the backlog consistently fed.
         </div>
       </div>
 
@@ -959,11 +964,11 @@ main{padding:30px 40px 60px;max-width:1900px;}
         </div>
 
         <div class="fnote">
-          <p>I was lead analyst on the program across all six functions. I measured top&#8209;of&#8209;funnel intake,
-          each enrolled group&rsquo;s performance and cross&#8209;brand attachment to Rocket Homes. I also tracked whether
-          members spent their points and Rocket Visa Signature Card rewards.</p>
-          <p>The ad&nbsp;hoc load forced a rebuild into an <b>analytical model</b> for self&nbsp;service. It was
-          then published and reused across the business.</p>
+          <p>I built one Power BI model that unified the AWS data lake and the warehouse. It covered
+          top&#8209;of&#8209;funnel intake, enrolled group performance and cross&#8209;brand attachment to Rocket Homes. It also
+          tracked whether members spent points and Rocket Visa Signature Card rewards.</p>
+          <p>The model was published for self&nbsp;service and reused across all six functions. It reached
+          <b>about 500 recurring users</b>, executives included.</p>
         </div>
       </div>
 
@@ -1163,18 +1168,19 @@ main{padding:30px 40px 60px;max-width:1900px;}
     {g:'Business Intelligence', n:'Power BI / DAX', mg:'Reporting &amp; BI',    t:'Expert', p:100, r:['lce','rkt','klb'], d:'Enterprise reports and measures'},
     {g:'Business Intelligence', n:'Report UX/UI', mg:'Reporting &amp; BI',      t:'Expert', p:100, r:['lce','rkt','klb'], d:'Layouts that need no training'},
     {g:'Business Intelligence', n:'Microsoft Excel', mg:'Reporting &amp; BI',   t:'Expert', p:100, r:['lce','rkt','klb'], d:'Analysis, modeling, macros, and VBA interfaces'},
-    {g:'Business Intelligence', n:'Paginated reports', mg:'Reporting &amp; BI', t:'Expert', p:100, r:['lce','rkt','klb'], d:'Operational reports, automated'},
+    {g:'Business Intelligence', n:'Paginated reports', mg:'Reporting &amp; BI', t:'Expert', p:100, r:['lce'], d:'Operational reports, automated'},
     {g:'Data Platform', n:'Tableau', mg:'Reporting &amp; BI',              t:'Proficient', p:52, r:['klb'], d:'Reports later moved to Power BI'},
 
     {g:'Data Platform', n:'Microsoft SQL Server', mg:'Data Platform', t:'Expert', p:100, r:['lce','rkt','klb'], d:'Source databases behind the models'},
-    {g:'Data Platform', n:'Amazon Web Services', mg:'Data Platform',  t:'Advanced', p:72, r:['lce','rkt'], d:'Lake records into an analytical model'},
+    {g:'Data Platform', n:'Amazon Web Services', mg:'Data Platform',  t:'Advanced', p:72, r:['rkt'], d:'Lake records into an analytical model'},
     {g:'Data Platform', n:'Microsoft Fabric', mg:'Data Platform',     t:'Proficient', p:52, r:['lce'], d:'Lakehouse and workspace structure'},
     {g:'Data Platform', n:'Databricks',           mg:'Data Platform', t:'Proficient', p:52, r:['lce'], d:'Lakehouse compute and jobs'},
 
     {g:'AI &amp; Automation', n:'Power Automate', mg:'AI &amp; Automation',        t:'Advanced', p:72, r:['lce','rkt','klb'], d:'Flows connecting systems to agents'},
     {g:'AI &amp; Automation', n:'AI assisted reporting', mg:'AI &amp; Automation', t:'Advanced', p:72, r:['lce','rkt'], d:'Reports from prompts, not builds'},
     {g:'AI &amp; Automation', n:'Agentic AI design', mg:'AI &amp; Automation',     t:'Advanced', p:72, r:['lce'], d:'Agent behavior and guardrails'},
-    {g:'AI &amp; Automation', n:'Copilot Studio', mg:'AI &amp; Automation',        t:'Advanced', p:72, r:['lce'], d:'Built and shipped our agent'}
+    {g:'AI &amp; Automation', n:'Copilot Studio', mg:'AI &amp; Automation',        t:'Advanced', p:72, r:['lce'], d:'Built and shipped our agent'},
+    {g:'AI &amp; Automation', n:'Databricks Genie', mg:'AI &amp; Automation',      t:'Proficient', p:52, r:['lce'], d:'Data agent answering plain language questions'}
   ];
 
   var EXP = [
@@ -1271,13 +1277,14 @@ main{padding:30px 40px 60px;max-width:1900px;}
       (r.pre ? '<span class="gpre">Prior To Analytics</span>' : '') +
       '<span class="gmeta">' + tc(r.yr) + ' \u00b7 ' + (r.mo/12).toFixed(1) + ' Yrs</span></div>' +
       '<div class="gtrack"><div class="gbar' + (r.pre ? ' pre' : '') + '" style="left:' + left.toFixed(2) + '%;width:' + w.toFixed(2) +
-      '%;background:' + (r.pre ? 'var(--surface)' : r.color) + ';color:' + (r.pre ? 'var(--ink-2)' : r.tc) + '"><span>' + tc(r.yr) + '</span></div>' +
+      '%' + (r.pre ? '' : ';background:' + r.color + ';color:' + r.tc) + '"><span>' + tc(r.yr) + '</span></div>' +
       '<div class="gdur" style="left:calc(' + (left + w).toFixed(2) + '% + 10px)">' + (r.mo/12).toFixed(1) + ' Yrs</div>' +
       '</div></div>';
   }).join('');
 
   // ---- education: graduation years only, marked on the career axis ----
-  // A marker sits on its year's tick. The B.A. predates the June 2016 axis start, so it sits at the start.
+  // A marker sits on its year's tick. The B.A. predates the June 2016 axis start, so it sits at the start,
+  // flagged edstart so phones can seat it wholly on the track instead of hanging off its left edge.
   var EDU = [
     {deg:'B.A. Business Administration', sch:'Alma College', yr:2016},
     {deg:'M.S. Data Analytics', sch:'Southern New Hampshire University', yr:2022}
@@ -1288,7 +1295,7 @@ main{padding:30px 40px 60px;max-width:1900px;}
     return '<div class="edrow">' +
       '<div class="glbl"><span class="co">' + e.deg + '</span><span class="ro">' + e.sch + '</span>' +
       '<span class="gmeta">' + e.yr + '</span></div>' +
-      '<div class="gtrack"><i class="edmark" style="left:' + left.toFixed(2) + '%"></i>' +
+      '<div class="gtrack"><i class="edmark' + (left === 0 ? ' edstart' : '') + '" style="left:' + left.toFixed(2) + '%"></i>' +
       '<span class="edyr" style="left:calc(' + left.toFixed(2) + '% + 16px)">' + e.yr + '</span></div></div>';
   }).join('');
 
