@@ -61,7 +61,7 @@ LinkedIn caches preview cards aggressively and will keep showing the old one. Fo
   with each degree marked at its graduation year.
 - **One skillset table.** Five capability groups, each with a rating and the employers it was used at.
   An arrow opens a group to show each capability and what I did with it. One dot is proficient, two
-  advanced, three expert.
+  advanced, three expert. Picking a role in the slicer holds the table to the capabilities used there.
 - **Short, direct copy.** Paragraphs keep to 15 words a sentence and 3 sentences a paragraph, and
   every title and label carries a capital on every word.
 - **A calmer dark theme.** Body text sits at about 11:1 rather than 14:1, which keeps it above WCAG AAA
@@ -77,7 +77,8 @@ LinkedIn caches preview cards aggressively and will keep showing the old one. Fo
   lending, and health and aging. The page opens on why public regulated data, one card per project, and
   how the shared backend was built. A Data Sources card cites all 13 public datasets, each linked to its
   publisher's own page. A card opens that project's full analysis and a conclusion that says
-  whether the question was answered, and a Back button returns to the cards.
+  whether the question was answered, and a Back button returns to the cards. Each section reads as prose
+  and then its visuals, and every bar carries the number it stands for.
   Every figure is generated from the writeup's figures and checked against them before upload. Link
   straight to a project with
   `#projects/flood-insurance`, `#projects/consumer-lending` or `#projects/health-and-aging`.
@@ -124,7 +125,8 @@ The rendered site, not GitHub. No code, no repo interface, no account required. 
 client-side:
 
 - Five report pages and the left navigation
-- The role slicer and its cross-filtering, across the four resume pages
+- The role slicer and its cross-filtering, across the four resume pages. On Skillset it filters the
+  capability rows to the ones used in that role
 - The Projects page, where the project cards are the filter, with deep links such as `#projects/flood-insurance`
 - The Download Resume button, which serves `resume.pdf` from this repo
 
