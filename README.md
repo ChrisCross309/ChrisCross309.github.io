@@ -51,8 +51,8 @@ LinkedIn caches preview cards aggressively and will keep showing the old one. Fo
 - **Deep plum accent** (`#4A1F52`) throughout, replacing the original vermillion. Ties to the
   Alzheimer's Association palette behind the volunteer work.
 - **A first-visit intro screen.** Shows once per visitor, then remembers: returning visitors land
-  straight on Overview. Re-openable any time via **View intro** in the left rail.
-- **A curated Overview.** A first-person profile with a call to action, and nine KPI tiles ordered so
+  straight on Overview.
+- **A curated Overview.** A first-person profile, and nine KPI tiles ordered so
   that the first two rows each span all three employers. Two figures are Rocket's own public numbers,
   cited to the Q4 2022 earnings call, so a recruiter can verify them without asking.
 - **A career timeline that leads with the analytics career** without hiding what came before it. The
@@ -61,7 +61,7 @@ LinkedIn caches preview cards aggressively and will keep showing the old one. Fo
   with each degree marked at its graduation year.
 - **One skillset table.** Five capability groups, each with a rating and the employers it was used at.
   An arrow opens a group to show each capability and what I did with it. One dot is proficient, two
-  advanced, three expert. Picking a role in the slicer holds the table to the capabilities used there.
+  advanced, three expert. The role slicer does not reach this page.
 - **Short, direct copy.** Paragraphs keep to 15 words a sentence and 3 sentences a paragraph, and
   every title and label carries a capital on every word.
 - **A calmer dark theme.** Body text sits at about 11:1 rather than 14:1, which keeps it above WCAG AAA
@@ -125,8 +125,8 @@ The rendered site, not GitHub. No code, no repo interface, no account required. 
 client-side:
 
 - Five report pages and the left navigation
-- The role slicer and its cross-filtering, across the four resume pages. On Skillset it filters the
-  capability rows to the ones used in that role
+- The role slicer and its cross-filtering, across Overview, Impact and Experience. Skillset and
+  Projects are not filtered by it
 - The Projects page, where the project cards are the filter, with deep links such as `#projects/flood-insurance`
 - The Download Resume button, which serves `resume.pdf` from this repo
 

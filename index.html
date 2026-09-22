@@ -132,8 +132,6 @@ main{padding:30px 40px 60px;max-width:1900px;}
 .vz-hd .hnote{font-size:11.5px;line-height:1.5;color:var(--ink-2);max-width:41ch;text-align:right;
   letter-spacing:0;text-transform:none;flex:none;}
 .vz-hd .hnote b{color:var(--ink);font-weight:700;}
-.pcta{margin:16px 0 0;padding-top:14px;border-top:1.5px solid var(--hair);font-size:13.6px;line-height:1.6;color:var(--ink-2);}
-.pcta a{color:var(--accent);font-weight:600;text-underline-offset:2px;}
 .prose{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.66;}
 .vz > .prose + .prose{margin-top:12px;}
 .fnote p{margin:0;}
@@ -254,7 +252,6 @@ main{padding:30px 40px 60px;max-width:1900px;}
 .mtx tbody tr:last-child td{border-bottom:0;}
 .pip{display:inline-block;width:11px;height:11px;border-radius:0;background:var(--accent);box-shadow:0 0 0 1.5px var(--ink);}
 .pip.off{background:transparent;box-shadow:0 0 0 1.5px var(--ink);opacity:.38;}
-.mtx th.hl,.mtx td.hl{background:var(--accent-wash);}
 /* grouped rows: the group bands break the list up, every marker stays on screen */
 .mtx tr.mg td{background:var(--surface-2);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
   padding-top:11px;padding-bottom:11px;}
@@ -311,6 +308,9 @@ main{padding:30px 40px 60px;max-width:1900px;}
 .role-hd .org{font-size:14.5px;color:var(--accent);font-weight:600;}
 .role-hd .when{font-family:var(--f-m);font-size:11px;color:var(--mute);letter-spacing:.04em;}
 .role .ctx{margin:8px 0 0;font-size:14px;color:var(--mute);line-height:1.5;max-width:96ch;}
+/* one employer holding several positions: the employer line, then each position under a hairline */
+.role .emp + .pos{margin-top:10px;}
+.role .pos + .pos{margin-top:18px;padding-top:16px;border-top:1px solid var(--hair);}
 .role ul{margin:14px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:9px 30px;}
 .role li{position:relative;padding-left:16px;font-size:14.5px;color:var(--ink-2);line-height:1.52;}
 .role li::before{content:"";position:absolute;left:1px;top:.56em;width:6px;height:6px;border-radius:0;
@@ -347,9 +347,6 @@ main{padding:30px 40px 60px;max-width:1900px;}
   padding:13px 34px;transition:.15s;}
 .intro-go:hover{background:#B98CC4;color:#160E19;}
 .intro-note{margin-top:15px;font-family:var(--f-m);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--rail-mute);}
-.rmini{margin-top:13px;border:0;background:transparent;color:var(--rail-mute);font-family:var(--f-m);font-size:9.5px;
-  letter-spacing:.16em;text-transform:uppercase;padding:6px 0;text-align:left;transition:.15s;}
-.rmini:hover{color:#fff;}
 /* the dark rail and intro need their own focus ring; the light-mode accent vanishes on near-black */
 .intro :focus-visible,.rail :focus-visible{outline:2px solid #B98CC4;outline-offset:3px;}
 
@@ -759,7 +756,7 @@ main{padding:30px 40px 60px;max-width:1900px;}
         padding:11px 16px 0;gap:9px;border-right:0;border-bottom:2px solid var(--ink);}
   .brandmark{display:none;}
   .rail .tt{display:none;}
-  .rail > div:first-child{display:flex;align-items:center;gap:11px;padding-right:124px;}
+  .rail > div:first-child{display:flex;align-items:center;gap:11px;padding-right:64px;}
   .rail h1{font-size:21px;margin:0;line-height:1.05;}
   .rail .li{margin:0;font-size:0;}
   .rail .li svg{width:18px;height:18px;}
@@ -769,7 +766,6 @@ main{padding:30px 40px 60px;max-width:1900px;}
       padding:12px;font-size:0;gap:0;justify-content:center;}
   .dl span{display:none;}
   .dl svg{width:18px;height:18px;}
-  .rmini{position:absolute;top:13px;right:66px;margin:0;padding:9px 2px;font-size:9px;}
 
   /* page nav as a tab strip; numbers dropped so all five fit without scrolling */
   .pages{flex-direction:row;flex-wrap:nowrap;gap:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
@@ -894,7 +890,7 @@ main{padding:30px 40px 60px;max-width:1900px;}
 </head>
 <body>
 
-<!-- first visit only; remembered afterwards, re-openable from the rail -->
+<!-- first visit only, and remembered afterwards -->
 <div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introName">
   <div class="intro-in">
     <div class="intro-mark">Portfolio &middot; <span class="yr-now">2026</span></div>
@@ -910,7 +906,7 @@ main{padding:30px 40px 60px;max-width:1900px;}
       <li><span>05</span>Projects</li>
     </ol>
     <button class="intro-go" id="introGo">Open The Report</button>
-    <div class="intro-note">The Role slicer filters the resume pages &middot; Projects has its own</div>
+    <div class="intro-note">The Role slicer filters Overview, Impact and Experience &middot; Projects has its own</div>
   </div>
 </div>
 
@@ -940,7 +936,6 @@ main{padding:30px 40px 60px;max-width:1900px;}
         <button data-p="skillset"><span class="n">04</span>Skillset</button>
         <button data-p="projects"><span class="n">05</span>Projects</button>
       </div>
-      <button class="rmini" id="introBtn">View Intro</button>
     </div>
 
     <button class="dl" id="dlBtn" hidden>
@@ -969,9 +964,6 @@ main{padding:30px 40px 60px;max-width:1900px;}
           <div class="vz-hd"><h3>Profile</h3></div>
           <p class="prose" data-verbatim="resume">
             I build the analytics and the tools a business runs on, not just the reports that describe what happened. Seven years across insurance, mortgage, and restaurant organizations, working from the semantic model underneath through to the user experience on top, across governed data models, automation, and AI assisted reporting. I translate unclear business questions into actionable insights and tools that run flawlessly on their own.
-          </p>
-          <p class="pcta">
-            If the work looks useful, download my resume. I would be glad to <a href="https://www.linkedin.com/in/christopher-hall-a2a534b3" target="_blank" rel="noopener">talk</a>.
           </p>
         </div>
 
@@ -1169,18 +1161,13 @@ main{padding:30px 40px 60px;max-width:1900px;}
         <div>
           <h2>Skillset</h2>
         </div>
-        <div class="ctrl">
-          <label for="sl4">Role</label>
-          <select class="slic" id="sl4"></select>
-          <span class="fstate">No Filter Applied</span>
-        </div>
       </div>
 
       <div class="vz">
         <div class="vz-hd"><div><h3>Capability Coverage</h3><p class="sk-note">The bar rates proficiency: one third proficient, two thirds advanced, three thirds expert. Columns show where I used each capability.</p></div></div>
         <div style="overflow-x:auto;">
           <table class="mtx" id="mtx">
-            <thead><tr><th>Capability</th><th class="wd">What I Did With It</th><th>Proficiency</th><th data-emp="lce">Little Caesars</th><th data-emp="rkt">Rocket Mortgage</th><th data-emp="klb">Farmers / Kraft Lake</th></tr></thead>
+            <thead><tr><th>Capability</th><th class="wd">What I Did With It</th><th>Proficiency</th><th>Little Caesars</th><th>Rocket Mortgage</th><th>Farmers / Kraft Lake</th></tr></thead>
             <tbody></tbody>
           </table>
         </div>
@@ -1284,17 +1271,25 @@ main{padding:30px 40px 60px;max-width:1900px;}
       'Selected to design and deliver TechWeek training two years running, teaching roughly 100 colleagues on Excel fundamentals and AI assisted analysis.',
       'Work inside a SCRUM delivery model, contributing to estimation, planning, and the standards the team builds against.'
      ]},
-    {id:'rkt', title:'Data Analyst', org:'Rocket Mortgage', when:'Detroit, MI \u00b7 Aug 2022 to Nov 2024',
-     ctx:'Performance Marketing analytics spanning Rocket Mortgage, Rocket Loans, and Rocket Homes, with functional ownership of the team\u2019s reporting stack.',
-     b:[
-      'Served as lead BI developer for Performance Marketing, owning the data views, reports, and analytical tooling the team ran on daily.',
-      'Led the Rocket Rewards analytics platform end to end as lead analyst, partnering with a senior analyst and a product owner from requirements through launch.',
-      'Built a range of models and tools that unified AWS data lake records with the on premise data warehouse, reconciling sources and grains that were never designed to line up.',
-      'Produced the Rocket Rewards cohort analysis that overturned a C-suite assumption about which client segments the program actually converted.',
-      'Built an audience viability tool scoring proposed campaign audiences against the predictive model before spend was committed.',
-      'Developed a required run rate model measuring sales pace against days remaining, projecting attainment and flagging at risk goals early.',
-      'Led three intern cohorts totaling six interns while carrying a full delivery load, teaching data model architecture and business process analysis.',
-      'Authored a monthly analytical publication built on findings rather than release notes, deliberately structured to spread insight rather than hoard it.'
+    {id:'rkt', org:'Rocket Mortgage', when:'Detroit, MI \u00b7 Aug 2022 to Nov 2024',
+     pos:[
+      {title:'Data Analyst, Performance Marketing', when:'Sep 2023 to Nov 2024',
+       ctx:'Performance Marketing analytics spanning Rocket Mortgage, Rocket Loans, and Rocket Homes, owning the reporting stack.',
+       b:[
+        'Served as lead BI developer for Performance Marketing, owning the data views, reports, and analytical tooling the team ran on daily.',
+        'Built an audience viability tool scoring proposed campaign audiences against the predictive model before spend was committed.',
+        'Developed a required run rate model measuring sales pace against days remaining, projecting attainment and flagging at risk goals early.',
+        'Led an intern cohort of two analysts. They redesigned the campaign performance report from the ground up.'
+       ]},
+      {title:'Data Analyst, Rocket Rewards', when:'Aug 2022 to Sep 2023',
+       ctx:'Loyalty program analytics for Rocket Rewards, from top of funnel intake to cross brand attachment.',
+       b:[
+        'Led the Rocket Rewards analytics platform end to end as lead analyst, partnering with a senior analyst and a product owner from requirements through launch.',
+        'Built a range of models and tools that unified AWS data lake records with the on premise data warehouse, reconciling sources and grains that were never designed to line up.',
+        'Produced the Rocket Rewards cohort analysis that overturned a C-suite assumption about which client segments the program actually converted.',
+        'Authored the team\u2019s monthly analytics publication, showcasing real results for people to see and digest.',
+        'Led two intern cohorts while carrying a full delivery load. Two analysts and an engineer shipped a production executive KPI report.'
+       ]}
      ]},
     {id:'klb', title:'Operations Data Analyst', org:'Farmers Insurance / Kraft Lake Brokerage', when:'Caledonia, MI \u00b7 Dec 2019 to Jul 2022',
      ctx:'Marketing and operations analytics for an insurance brokerage, where I moved the whole reporting practice onto a modern platform.',
@@ -1339,7 +1334,9 @@ main{padding:30px 40px 60px;max-width:1900px;}
   function tc(s){ return String(s).replace(/(^|[\s\-\/(])([a-z])/g, function(m, a, b){ return a + b.toUpperCase(); }); }
 
   // ---- slicer dropdowns ----
-  var opts = '<option value="">All Roles</option>' + ROLES.filter(function(r){return r.pick;}).map(function(r){
+  // newest employer first, the way the Experience page reads. ROLES itself stays in time order,
+  // because it also sets the timeline row order and the first analytics month; filter returns a copy.
+  var opts = '<option value="">All Roles</option>' + ROLES.filter(function(r){return r.pick;}).reverse().map(function(r){
     return '<option value="' + r.id + '">' + r.co + '</option>';
   }).join('');
   Array.prototype.forEach.call(document.querySelectorAll('.slic'), function(s){
@@ -1471,36 +1468,30 @@ main{padding:30px 40px 60px;max-width:1900px;}
 
   // Each group band is a toggle. Closed, it shows the group's rating and coverage; open, its capabilities.
   // Phones hide the What I Did column, so there each capability also gets a full width line beneath it.
-  // The Role slicer redraws the table: with a role picked a band holds only the capabilities used in
-  // that role, and every band opens, so the relevant skills are on screen without a click. Bands a
-  // reader opened stay open when the filter clears, which is why OPEN outlives a redraw.
+  // The Role slicer came off this page on 2026-09-22: the table always shows every capability, with
+  // no employer highlight. OPEN outlives a redraw so a band a reader opened stays open.
   var mtb = el('mtx').querySelector('tbody'), OPEN = {};
-  function drawMatrix(role){
-    if (role) MGROUPS.forEach(function(g, i){ OPEN[i] = true; });
-    Array.prototype.forEach.call(document.querySelectorAll('#mtx thead th[data-emp]'), function(h){
-      h.className = (h.dataset.emp === role) ? 'hl' : '';
-    });
+  function drawMatrix(){
     mtb.innerHTML = MGROUPS.map(function(gname, gi){
-      var kids = SKILLS.filter(function(s){ return s.mg === gname && (!role || s.r.indexOf(role) >= 0); });
-      if (!kids.length) return '';
+      var kids = SKILLS.filter(function(s){ return s.mg === gname; });
       var shut = !OPEN[gi], hide = shut ? ' hidden' : '';
       return '<tr class="mg"><td><button type="button" class="mg-btn" aria-expanded="' + String(!shut) + '" data-g="' + gi + '">' +
         '<i class="chev" aria-hidden="true"></i><span class="gname">' + gname + '</span></button></td><td class="wd"></td>' + mgcell(gname) +
         EMP.map(function(r){
-          return '<td' + (r === role ? ' class="hl"' : '') + '><span class="seg">' + kids.map(function(s){
+          return '<td><span class="seg">' + kids.map(function(s){
             return '<i class="' + (s.r.indexOf(r) >= 0 ? '' : 'off') + '"></i>';
           }).join('') + '</span></td>';
         }).join('') + '</tr>' +
         kids.map(function(s){
           return '<tr class="mk" data-g="' + gi + '"' + hide + '><td class="kn">' + tc(s.n) + '</td><td class="wd">' + s.d + '</td>' + lvcell(s) +
             EMP.map(function(r){
-              return '<td' + (r === role ? ' class="hl"' : '') + '><span class="pip' +
-                (s.r.indexOf(r) >= 0 ? '' : ' off') + '"></span></td>';
+              return '<td><span class="pip' + (s.r.indexOf(r) >= 0 ? '' : ' off') + '"></span></td>';
             }).join('') + '</tr>' +
             '<tr class="mkd" data-g="' + gi + '"' + hide + '><td class="kd" colspan="6">' + s.d + '</td></tr>';
         }).join('');
     }).join('');
   }
+  drawMatrix();
   mtb.addEventListener('click', function(e){
     var band = e.target.closest('tr.mg');
     if (!band) return;
@@ -1511,16 +1502,27 @@ main{padding:30px 40px 60px;max-width:1900px;}
   });
 
   // ---- experience ----
+  function items(b){ return '<ul>' + b.map(function(t){return '<li>' + t + '</li>';}).join('') + '</ul>'; }
+
+  // An entry carrying pos[] is one employer with several positions, newest first, the way LinkedIn
+  // groups them: the employer line on top, then each position with its own title and dates. The
+  // positions carry no data-r, so the slicer still shows or hides the whole card.
   el('roles').innerHTML = EXP.map(function(e){
+    if (e.pos) return '<article class="role" data-r="' + e.id + '"><div class="role-hd emp"><span class="org">' +
+      e.org + '</span><span class="when">' + tc(e.when) + '</span></div>' +
+      e.pos.map(function(p){
+        return '<div class="pos"><div class="role-hd"><h3>' + p.title + '</h3><span class="when">' +
+          tc(p.when) + '</span></div>' + items(p.b) + '</div>';
+      }).join('') + '</article>';
     return '<article class="role" data-r="' + e.id + '"><div class="role-hd"><div><h3>' + e.title +
       '</h3><span class="org">' + e.org + '</span></div><span class="when">' + tc(e.when) + '</span></div>' +
-      '<ul>' + e.b.map(function(t){return '<li>' + t + '</li>';}).join('') + '</ul></article>';
+      items(e.b) + '</article>';
   }).join('');
 
   el('vol').innerHTML = VOL.map(function(e){
     return '<article class="role"><div class="role-hd"><div><h3>' + e.title +
       '</h3><span class="org">' + e.org + '</span></div><span class="when">' + tc(e.when) + '</span></div>' +
-      '<ul>' + e.b.map(function(t){return '<li>' + t + '</li>';}).join('') + '</ul></article>';
+      items(e.b) + '</article>';
   }).join('');
 
   // ---- work / volunteer sub-nav ----
@@ -1559,7 +1561,6 @@ main{padding:30px 40px 60px;max-width:1900px;}
     Array.prototype.forEach.call(document.querySelectorAll('#overview .grow'), function(x){
       x.classList.toggle('dim', !!active && x.dataset.r !== active);
     });
-    drawMatrix(active);
     Array.prototype.forEach.call(document.querySelectorAll('#experience .role[data-r]'), function(x){
       x.hidden = !!active && x.dataset.r !== active;
     });
@@ -1626,8 +1627,7 @@ main{padding:30px 40px 60px;max-width:1900px;}
 (function(){
   var root = document.documentElement, intro = document.getElementById('intro');
   if (!intro) return;
-  var go = document.getElementById('introGo'), reopen = document.getElementById('introBtn'),
-      app = document.querySelector('.app');
+  var go = document.getElementById('introGo'), app = document.querySelector('.app');
 
   function shown(){ return root.getAttribute('data-intro') === 'show'; }
   function veil(on){
@@ -1635,15 +1635,15 @@ main{padding:30px 40px 60px;max-width:1900px;}
     app.inert = on;                                   // no-op where unsupported
     if (on) app.setAttribute('aria-hidden','true'); else app.removeAttribute('aria-hidden');
   }
-  function show(){ root.setAttribute('data-intro','show'); veil(true); go.focus(); }
   function hide(){
     root.removeAttribute('data-intro'); veil(false);
     try { localStorage.setItem('chall_intro_seen_v1','1'); } catch (e) {}   // private mode / file:// can throw
-    if (reopen) reopen.focus();
+    // a one time screen now, so focus lands on the report page the reader arrives on
+    var tab = document.querySelector('#pages button[aria-current="true"]');
+    if (tab) tab.focus();
   }
 
   go.addEventListener('click', hide);
-  if (reopen) reopen.addEventListener('click', show);
   document.addEventListener('keydown', function(e){
     if (!shown()) return;
     if (e.key === 'Escape') { hide(); return; }
