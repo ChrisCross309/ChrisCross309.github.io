@@ -14,8 +14,8 @@ Four files, and all four belong in the repository root.
 
 | File | What it is |
 |---|---|
-| `index.html` | The entire site. Self-contained: all CSS, JavaScript, and the resume PDF live inside this one file. No build step, no dependencies. |
-| `resume.pdf` | The same resume as a direct link, for applications that ask for a URL. |
+| `index.html` | The entire site. Self-contained: all CSS and JavaScript live inside this one file. No build step, no dependencies. |
+| `resume.pdf` | The resume at its own URL, for anything that asks for a direct PDF link. Nothing on the site links to it. |
 | `og.png` | The 1200×630 preview card LinkedIn, Slack, and iMessage show when the link is shared. |
 | `README.md` | This file. |
 
@@ -35,9 +35,8 @@ The repository already exists and Pages is already enabled, so updating is just 
 If a change doesn't appear, it is almost always browser cache rather than a failed deploy. Check in a
 private window before assuming something broke.
 
-`index.html` and `resume.pdf` travel together: the PDF is embedded inside the HTML as base64 behind the
-Download Resume button, so uploading one without the other means the button serves a different document
-than the direct link does.
+`index.html` and `resume.pdf` are independent since 2026-09-22. The page no longer carries a copy of the
+resume, so either can be uploaded on its own.
 
 ### After changing `og.png` or the Open Graph tags
 
@@ -91,7 +90,7 @@ GitHub Pages is free only from a **public** repository. Everything here is visib
 
 That is fine for these files. `index.html` is built from the PII-stripped resume and carries only the
 LinkedIn URL: no email address, no phone number, no home city. This is verified automatically on every
-build, including by decoding the PDF embedded behind the Download Resume button and extracting its text.
+build.
 
 **Never add these to this repo:**
 
@@ -128,7 +127,6 @@ client-side:
 - The role slicer and its cross-filtering, across Overview, Impact and Experience. Skillset and
   Projects are not filtered by it
 - The Projects page, where the project cards are the filter, with deep links such as `#projects/flood-insurance`
-- The Download Resume button, which serves `resume.pdf` from this repo
 
 Fonts come from Google Fonts. If that request fails, the page falls back to Arial Narrow and system
 sans: still legible, different typeface.
